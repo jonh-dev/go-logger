@@ -5,19 +5,29 @@ import (
 )
 
 func TestLog(t *testing.T) {
-	l := NewLogger()
+	log := NewLogger()
 
-	levels := []Level{INFO, SUCCESS, WARNING, ERROR, PANIC, FATAL}
+	tests := []struct {
+		name string
+		f    func(string)
+	}{
+		{"Info", log.Info},
+		{"Success", log.Success},
+		{"Warning", log.Warning},
+		{"Error", log.Error},
+		{"Panic", log.Panic},
+		{"Fatal", log.Fatal},
+	}
 
-	for _, level := range levels {
-		func() {
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
 			defer func() {
 				if r := recover(); r != nil {
-					t.Errorf("A função Log causou um pânico ao ser chamada com o nível de log %v", level)
+					t.Errorf("The function %s caused a panic", tt.name)
 				}
 			}()
 
-			l.Log(level, "Mensagem de teste")
-		}()
+			tt.f("Test message")
+		})
 	}
 }
