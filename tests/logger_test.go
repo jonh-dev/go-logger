@@ -2,6 +2,8 @@ package logger
 
 import (
 	"testing"
+
+	"github.com/jonh-dev/go-logger/logger"
 )
 
 func TestLog(t *testing.T) {
@@ -9,12 +11,12 @@ func TestLog(t *testing.T) {
 		name string
 		f    func(string)
 	}{
-		{"Info", Info},
-		{"Success", Success},
-		{"Warning", Warning},
-		{"Error", Error},
-		{"Panic", Panic},
-		{"Fatal", Fatal},
+		{"Info", logger.Info},
+		{"Success", logger.Success},
+		{"Warning", logger.Warning},
+		{"Error", logger.Error},
+		{"Panic", logger.Panic},
+		{"Fatal", logger.Fatal},
 	}
 
 	for _, tt := range tests {
