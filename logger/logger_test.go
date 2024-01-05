@@ -5,18 +5,16 @@ import (
 )
 
 func TestLog(t *testing.T) {
-	log := NewLogger()
-
 	tests := []struct {
 		name string
 		f    func(string)
 	}{
-		{"Info", log.Info},
-		{"Success", log.Success},
-		{"Warning", log.Warning},
-		{"Error", log.Error},
-		{"Panic", log.Panic},
-		{"Fatal", log.Fatal},
+		{"Info", Info},
+		{"Success", Success},
+		{"Warning", Warning},
+		{"Error", Error},
+		{"Panic", Panic},
+		{"Fatal", Fatal},
 	}
 
 	for _, tt := range tests {
