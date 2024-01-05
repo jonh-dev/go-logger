@@ -19,7 +19,12 @@ const (
 )
 
 type Logger interface {
-	Log(level Level, message string)
+	Info(message string)
+	Success(message string)
+	Warning(message string)
+	Error(message string)
+	Panic(message string)
+	Fatal(message string)
 }
 
 type logger struct{}
@@ -28,29 +33,34 @@ func NewLogger() Logger {
 	return &logger{}
 }
 
-/*
-Log imprime uma mensagem no console com o nível de log informado.
+func (l *logger) Info(message string) {
+	l.log(INFO, message)
+}
 
-- INFO: Mensagem informativa
+func (l *logger) Success(message string) {
+	l.log(SUCCESS, message)
+}
 
-- SUCCESS: Mensagem de sucesso
+func (l *logger) Warning(message string) {
+	l.log(WARNING, message)
+}
 
-- WARNING: Mensagem de alerta
+func (l *logger) Error(message string) {
+	l.log(ERROR, message)
+}
 
-- ERROR: Mensagem de erro
+func (l *logger) Panic(message string) {
+	l.log(PANIC, message)
+}
 
-- PANIC: Mensagem de erro seguida de um panic
+func (l *logger) Fatal(message string) {
+	l.log(FATAL, message)
+}
 
-- FATAL: Mensagem de erro seguida de um os.Exit(1)
-
-@param level
-
-@param message
-*/
-func (l *logger) Log(level Level, message string) {
-	_, fn, line, _ := runtime.Caller(1)
+func (l *logger) log(level Level, message string) {
+	_, fn, line, _ := runtime.Caller(2)
 	threadID := fmt.Sprintf("%d", time.Now().UnixNano())
-	logDetails := fmt.Sprintf("%s | %s | %s:%d", time.Now().Format("2006/01/02 15:04:05"), threadID, fn, line)
+	logDetails := fmt.Sprintf("| %s | %s:%d", threadID, fn, line)
 
 	switch level {
 	case INFO:
