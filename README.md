@@ -27,7 +27,7 @@ The following tools were used in building the project:
 
 **2.** Choose an IDE of your choice, in this case we will use Visual Studio Code. To download it follow the link: https://code.visualstudio.com/download
 
-**3.** Open your terminal and use `go get` to download and install the `go-logger` library. Replace `github.com/jonh-dev/go-logger` with the path to your `go-logger` library:
+**3.** Open your terminal and use `go get` to download and install the `go-logger` library. Replace `github.com/jonh-dev/go-logger/logger` with the path to your `go-logger` library:
 
 ```bash
 $ go get github.com/jonh-dev/go-logger
