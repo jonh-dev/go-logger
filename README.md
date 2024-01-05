@@ -37,7 +37,7 @@ $ go get github.com/jonh-dev/go-logger
 
 ```go
 import (
-    "github.com/jonh-dev/go-logger"
+    "github.com/jonh-dev/go-logger/logger"
 )
 ```
 
