@@ -57,6 +57,29 @@ func (l *logger) Fatal(message string) {
 	l.log(FATAL, message)
 }
 
+/*
+Log imprime uma mensagem no console com o nível de log informado.
+
+- level: nível de log
+
+- message: mensagem a ser impressa
+
+- fn: nome da função que chamou o log
+
+- line: linha da função que chamou o log
+
+- threadID: ID da thread que chamou o log
+
+- logDetails: detalhes do log
+
+@params level Level
+
+@params message string
+
+@return void
+
+@struct logger
+*/
 func (l *logger) log(level Level, message string) {
 	_, fn, line, _ := runtime.Caller(2)
 	threadID := fmt.Sprintf("%d", time.Now().UnixNano())
