@@ -3,6 +3,7 @@ package logger
 import (
 	"fmt"
 	"log"
+	"path/filepath"
 	"runtime"
 	"time"
 )
@@ -54,7 +55,7 @@ func logFunc(level Level) func(message string) {
 	return func(message string) {
 		_, fn, line, _ := runtime.Caller(1)
 		threadID := fmt.Sprintf("%d", time.Now().UnixNano())
-		logDetails := fmt.Sprintf("| %s | %s:%d", threadID, fn, line)
+		logDetails := fmt.Sprintf("| %s | %s:%d", threadID, filepath.Base(fn), line)
 
 		switch level {
 		case INFO:
