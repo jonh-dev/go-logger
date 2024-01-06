@@ -8,7 +8,7 @@
  <a href="#author">Author</a>
 </p>
 
-![image](https://github.com/jonh-dev/go-logger/assets/101439670/1c8a636c-a580-4b47-9b55-9739442b48df)
+![image](https://github.com/jonh-dev/go-logger/assets/101439670/322b7e22-025b-482e-b142-3a1401c04fad)
 
 ##
 
